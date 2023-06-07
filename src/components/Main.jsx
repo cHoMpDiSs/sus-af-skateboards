@@ -5,7 +5,7 @@ import Header from "./Header";
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
 import Skateboards from "./Skateboards";
-// import Skateboards from "./Skateboards";
+
 
 
 const Main = (props) =>{

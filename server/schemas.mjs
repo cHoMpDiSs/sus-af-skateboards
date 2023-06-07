@@ -2,6 +2,7 @@
 const schemas = {
   
  skateboardSchema:{
+      type: String,
       name: String,
       size: String,
       price: Number,
@@ -10,6 +11,7 @@ const schemas = {
     },
     
      pantsSchema:{
+      type: String,
       name: String,
       size: String,
       color: String,
@@ -20,6 +22,7 @@ const schemas = {
     },
 
     tshirtSchema:{
+      type: String,
       name: String,
       size: String,
       color: String,

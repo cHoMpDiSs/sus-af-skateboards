@@ -10,7 +10,7 @@ function Shirts(){
     },[])
 
     const shirts = async () =>{
-    const response = await fetch('http://localhost:5000/shirts.json');
+    const response = await fetch('http://localhost:5000/api/shirts');
 
     setShirt(await response.json())
 }

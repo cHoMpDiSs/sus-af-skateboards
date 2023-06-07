@@ -12,7 +12,7 @@ function Pants(props){
     },[])
     
     const pants = async () =>{
-    const response = await fetch('http://localhost:5000/pants.json');
+    const response = await fetch('http://localhost:5000/api/pants');
 
     setPant(await response.json())
     }
