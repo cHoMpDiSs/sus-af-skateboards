@@ -122,6 +122,29 @@ app.patch('/api/skateboards/:id', async (req, res) => {
   });
 
 
+  app.patch('/api/shirts/:id', async (req, res) => {
+  
+    const shirt = await Tshirts.findById(req.params.id)
+    const newQuantity = req.body.quantity
+    // console.log(newQuantity)
+    if (!shirt) return res.status(404).send("Shirt not found....");
+  
+    try {
+      const updatedShirt = await Tshirts.findByIdAndUpdate(req.params.id, {
+        quantity: newQuantity
+        
+      });
+      console.log("succesfully updated")
+      res.status(200).send(updatedShirt);
+    }catch (err){
+      res.status(500).send(err.message);
+      console.log(err.message);
+    } 
+    });
+
+
+
+
 app.get('*',(req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });

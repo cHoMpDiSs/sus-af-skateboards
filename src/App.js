@@ -92,16 +92,14 @@ let checkOut = (product) => {
       setCartItems([]);
 
     }
-    
-
-  
+      
 
   return(
   
       <Routes>
         <Route path="/" element={<Main onAdd={onAdd}/>}/>
         <Route path="/pants" element={<Pants onAdd={onAdd}/>}/>
-        <Route path="/shirts" element={<Shirts onAdd={onAdd}/>}/>
+        <Route path="/shirts" element={<Shirts onAdd={onAdd} cartItems={cartItems}/>}/>
         <Route path="/skateboards" element={<Skateboards onAdd={onAdd} cartItems={cartItems}/>}/>
         <Route path="/cart" element={<Cart onAdd={onAdd} cartItems={cartItems} setCartItems={setCartItems} onRemove={onRemove} checkOut={checkOut} ></Cart>}/>
         <Route path="/thankyou" element={<Thank/>}/>

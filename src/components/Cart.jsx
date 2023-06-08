@@ -45,7 +45,7 @@ export default function Cart(props){
                     : <div></div>}
                     <button onClick={()=>{checkOut(item);navigateToThankYou()}}>Check Out</button>
                 </div>
-  
+                
             </div>
         ))}
     </aside>

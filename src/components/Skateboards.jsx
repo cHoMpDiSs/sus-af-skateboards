@@ -13,7 +13,7 @@ function Skateboards(props){
 
 
 
-    const [skateboardQty, setSkateboardQty] = useState(0);
+    // const [skateboardQty, setSkateboardQty] = useState(0);
 
     const [qtySelector, setSelector] = useState(1);
     const selectorValue = (qty) =>{
@@ -46,7 +46,7 @@ console.log("rows" + rows)
 
 const rows = [];
 
-console.log(skateboardQty)
+
 
     return(
         <div>
