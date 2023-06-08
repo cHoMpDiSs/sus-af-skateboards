@@ -68,7 +68,7 @@ const rows = [];
 
                         </select>
                         {boardCartQty() < product.quantity ? <button onClick={() => {(localStorage.setItem("localQty",qtySelector));
-                        onAdd(skateboard[0],localStorage.getItem("localQty"),boardCartQty()) }} >Add </button> : <h3>You have the maximum boards in your cart available</h3> }
+                        onAdd(skateboard[0],localStorage.getItem("localQty")) }} >Add </button> : <h3>You have the maximum boards in your cart available</h3> }
                         
                         </li>
                 )}

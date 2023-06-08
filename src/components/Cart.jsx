@@ -5,13 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 export default function Cart(props){
-    const {cartItems, onAdd, onRemove, checkOut} = props;
+    const {cartItems, onAdd, onRemove, checkOutLoop} = props;
     const navigate = useNavigate();
-
     const navigateToThankYou = () => {
         navigate('/thankyou');
     };
-
 
     return(
     <aside className="block col-1">
@@ -20,19 +18,13 @@ export default function Cart(props){
         <div>
             {cartItems.length === 0 && <div>Cart is empty </div>}
         </div>
-
-
-
-
         {cartItems.map((item, index) => (
-            
             <div key={item._id} className="row">
                 <div className="col-2">{item.name}</div>
                 <div className="col-2">
                     {item.quantity > 0 && <div>{item.quantity} x ${item.price}</div>}
                 </div>
                 <div className="col-2">
-
                     {item.quantity > 0 ? <div>
                     {item.quantity <= 14? <div>
                     <button onClick={()=>onRemove(item)} className="remove">-</button>
@@ -43,11 +35,12 @@ export default function Cart(props){
                      <p>You have the maximum {item.name} available</p></div>}
                      </div>
                     : <div></div>}
-                    <button onClick={()=>{checkOut(item);navigateToThankYou()}}>Check Out</button>
+                    
                 </div>
                 
             </div>
         ))}
+        {cartItems.length != 0 && <button onClick={()=>{checkOutLoop(cartItems);navigateToThankYou()}}>Check Out</button>}
     </aside>
 )};
 

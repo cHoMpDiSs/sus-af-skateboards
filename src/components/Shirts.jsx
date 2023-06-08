@@ -10,8 +10,6 @@ function Shirts(props){
     shirts()
     },[])
 
-    const [shirtQty, setShirtQty] = useState(0);
-
     const [qtySelector, setSelector] = useState(1);
     const selectorValue = (qty) =>{
         setSelector();
