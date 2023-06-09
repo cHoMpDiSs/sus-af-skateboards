@@ -7,13 +7,10 @@ import { Link } from "react-router-dom";
 function Skateboards(props){
     const [skateboard, setSkateboard] = useState([]);
     const {product, onAdd, cartItems} = props;
+    
     useEffect(()=>{
     skateboards()
     },[]) 
-
-
-
-    // const [skateboardQty, setSkateboardQty] = useState(0);
 
     const [qtySelector, setSelector] = useState(1);
     const selectorValue = (qty) =>{
@@ -24,10 +21,8 @@ function Skateboards(props){
     setSkateboard(await response.json())
     
 }
-
     console.log("cart Items",cartItems);
     
-
 function boardCartQty(){
     let boardCartItems = 0;
     for (let i = 0; i < cartItems.length; i++){
@@ -38,16 +33,9 @@ function boardCartQty(){
         }
     } return(boardCartItems);
 }
-
-
-
 console.log("rows" + rows)
 
-
 const rows = [];
-
-
-
     return(
         <div>
             <Link to="/">Home</Link>

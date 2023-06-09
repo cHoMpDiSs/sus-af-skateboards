@@ -5,12 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 export default function Cart(props){
-    const {cartItems, onAdd, onRemove, checkOutLoop} = props;
+    const {cartItems, onAdd, onRemove, checkOut, checkOutItems} = props;
     const navigate = useNavigate();
     const navigateToThankYou = () => {
         navigate('/thankyou');
     };
-
     return(
     <aside className="block col-1">
         <Link to="/">Home</Link>
@@ -26,7 +25,7 @@ export default function Cart(props){
                 </div>
                 <div className="col-2">
                     {item.quantity > 0 ? <div>
-                    {item.quantity <= 14? <div>
+                    {item.quantity < checkOutItems[index].quantity? <div>
                     <button onClick={()=>onRemove(item)} className="remove">-</button>
                     <button onClick={()=>onAdd(item,1)} className="add">+</button>
                     </div>
@@ -40,7 +39,7 @@ export default function Cart(props){
                 
             </div>
         ))}
-        {cartItems.length != 0 && <button onClick={()=>{checkOutLoop(cartItems);navigateToThankYou()}}>Check Out</button>}
+        {cartItems.length != 0 && <button onClick={()=>{checkOut(cartItems);navigateToThankYou()}}>Check Out</button>}
     </aside>
 )};
 

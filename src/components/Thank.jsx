@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 
 
 function Thank(){
+   
+
 return(
     <div>
     <Link to="/">Home</Link>
