@@ -18,7 +18,7 @@ function App(){
      if(exist && product.quantity >= productQty){
       let newArr = [...cartItems];
         for(let i = 0; i < cartItems.length; i++){
-          if (cartItems[i].name === product.name){
+          if (cartItems[i].id === product.id){
               newArr[i].quantity = parseInt(productQty) + parseInt(cartItems[i].quantity);
         }};
         setCartItems(newArr);
@@ -53,7 +53,7 @@ let checkOut = (products) => {
   for(let i = 0; i < checkOutItems.length; i++){
     if (products[i].id === checkOutItems[i].id ){  // this was cartitems.id
       let idString = products[i]._id;
-      let typeString = products[i].type;
+      let typeString = products[i].product;
       console.log("CHECK OUT ITEM", checkOutItems[i])
       console.log("THIS IS THE ITEM TO BE STORED IN DATABASE", checkOutItems[i].quantity - products[i].quantity)
       

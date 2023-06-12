@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 const app = express(); // create express app
 
 
+const urlencodedParser = bodyParser.urlencoded({extended: false})
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -25,42 +26,60 @@ const Skateboards = mongoose.model('Skateboard', schemas.skateboardSchema)
 const Tshirts = mongoose.model('Tshirt', schemas.tshirtSchema)
 
 const susBaggiesM = new Pants({
-  type: "pants",
+  product: "pants",
   name: "90's baggy jeans",
   size: "Medium",
   color: "Black",
   price: 80,
   description: "Bring back the 90's skate scene with this classic cut.",
   quantity: 5,
-  stock: true
+  instock: true
 });
 
 const susBasicDeck85 = new Skateboards({
-  type: "skateboards",
+  product: "skateboards",
   name: "SUS AF Minimalist",
   size: "8.5",
   price: 45,
   quantity: 15,
-  stock: true
+  instock: true
+});
+
+const susBasicDeck83 = new Skateboards({
+  product: "skateboards",
+  name: "SUS AF Minimalist",
+  size: "8.3",
+  price: 45,
+  quantity: 15,
+  instock: true
+});
+
+const susBasicDeck8 = new Skateboards({
+  product: "skateboards",
+  name: "SUS AF Minimalist",
+  size: "8",
+  price: 45,
+  quantity: 15,
+  instock: true
 });
 
 const tShirtWhite = new Tshirts({
-  type: "shirts",
+  product: "shirts",
   name: "Plain White smiley Tee ",
   size: "L",
   price: 19.99,
   quantity: 10,
-  stock: true
+  description: "",
+  instock: true
 });
 
 // tShirtWhite.save();
 // susBaggiesM.save();
-// susBasicDeck85.save();
-
+// susBasicDeck83.save();
+// susBasicDeck8.save()
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
-
 
 app.get('/api/pants', async (req, res) => {
   try{
@@ -88,6 +107,7 @@ app.get('/api/skateboards/', async (req, res)=> {
     res.json(err)
   }
 })
+
 app.get('/api/skateboards/:id', async (req, res)=> {
   try{
     const allSkateboards = await Skateboards.find({});
@@ -97,18 +117,21 @@ app.get('/api/skateboards/:id', async (req, res)=> {
   }
 })
 
+app.post('/api/skateboards', async(req , res) =>{
+  const newBoard = Skateboards(req.body);
+  console.log(newBoard);
+  await newBoard.save();
+  res.send(newBoard);
+})
 
 app.patch('/api/skateboards/:id', async (req, res) => {
   
   const skateboard = await Skateboards.findById(req.params.id)
   const newQuantity = req.body.quantity
-  // console.log(newQuantity)
   if (!skateboard) return res.status(404).send("Skateboard not found....");
-
   try {
     const updatedSkate = await Skateboards.findByIdAndUpdate(req.params.id, {
-      quantity: newQuantity
-      
+      quantity: newQuantity     
     });
     console.log("succesfully updated")
     res.status(200).send(updatedSkate);
@@ -120,16 +143,12 @@ app.patch('/api/skateboards/:id', async (req, res) => {
 
 
 app.patch('/api/shirts/:id', async (req, res) => {
-
   const shirt = await Tshirts.findById(req.params.id)
   const newQuantity = req.body.quantity
-  // console.log(newQuantity)
   if (!shirt) return res.status(404).send("Shirt not found....");
-
   try {
     const updatedShirt = await Tshirts.findByIdAndUpdate(req.params.id, {
       quantity: newQuantity
-      
     });
     console.log("succesfully updated")
     res.status(200).send(updatedShirt);
@@ -140,16 +159,12 @@ app.patch('/api/shirts/:id', async (req, res) => {
   });
 
 app.patch('/api/pants/:id', async (req, res) => {
-
   const pant = await Pants.findById(req.params.id)
   const newQuantity = req.body.quantity
-  // console.log(newQuantity)
   if (!pant) return res.status(404).send("Pant not found....");
-
   try {
     const updatedPant = await Pants.findByIdAndUpdate(req.params.id, {
       quantity: newQuantity
-      
     });
     console.log("succesfully updated")
     res.status(200).send(updatedPant);
@@ -159,11 +174,11 @@ app.patch('/api/pants/:id', async (req, res) => {
   } 
   });
 
-
-
-app.get('*',(req, res, next) => {
+  app.get('*',(req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
+
+
 
 // start express server on port 5000
 app.listen(5000, () => {

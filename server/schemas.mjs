@@ -2,34 +2,37 @@
 const schemas = {
   
  skateboardSchema:{
-      type: String,
+      
+      product: String,
       name: String,
       size: String,
       price: Number,
       quantity: Number,
-      inStock: Boolean
+      instock: Boolean
     },
     
      pantsSchema:{
-      type: String,
+     
+      product: String,
       name: String,
       size: String,
       color: String,
       price: Number,
       description: String,
       quantity: Number,
-      inStock: Boolean
+      instock: Boolean
     },
 
     tshirtSchema:{
-      type: String,
+     
+      product: String,
       name: String,
       size: String,
       color: String,
       price: Number,
       description: String,
       quantity: Number,
-      inStock: Boolean
+      instock: Boolean
     }
 
 }
