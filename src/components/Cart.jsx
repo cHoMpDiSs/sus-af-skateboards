@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-export default function Cart(props){
+const Cart = (props) =>{
     const {cartItems, onAdd, onRemove, checkOut, checkOutItems} = props;
     const navigate = useNavigate();
     const navigateToThankYou = () => {
@@ -47,7 +47,7 @@ export default function Cart(props){
 
 
 
-
+export default Cart;
 
 
 

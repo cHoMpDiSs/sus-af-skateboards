@@ -3,14 +3,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-function Pants(props){
+const Pants = (props) =>{
     const [pant, setPant] = useState([]);
     const {product, onAdd, cartItems} = props;
     useEffect(() =>{
     pants()
     },[])
     
-
     const [qtySelector, setSelector] = useState(1);
     const selectorValue = (qty) =>{
         setSelector();
@@ -22,19 +21,16 @@ function Pants(props){
     setPant(await response.json())
     }
 
-    function pantCartQty(){
+    const pantCartQty = (prodcuctId) =>{
         let pantCartItems = 0;
         for (let i = 0; i < cartItems.length; i++){
-            if ( cartItems[i].name === pant[0].name){
+            if ( prodcuctId === cartItems[i]._id){
                 pantCartItems = pantCartItems + parseInt(cartItems[i].quantity);
-                console.log("pantCart Items in func", pantCartItems);
-                console.log(pant[0].name)
+                console.log("boardCart Items in func", pantCartItems);
             }
         } return(pantCartItems);
     }
 
-
-    const rows = [];
 
 
     return(
@@ -43,21 +39,28 @@ function Pants(props){
             <h3>Pants</h3>
             <ol>
                 {pant.map((product)=>{
+                    const cartAmount = pantCartQty(product._id);
+                    const rows = [];
                     for (let i = 1; i <= product.quantity - pantCartQty(); i++){
-                        rows.push(<option value={i}>i</option>)
+                        rows.push(<option value={i}>{i}</option>)
                         } 
-                        
-                    return(
-                        <li key={product.id}>{product.name} ${product.price} quantity:{product.quantity - pantCartQty()}
-                        <select
-
-                        onChange={(e) => setSelector(e.target.value)}>
-                            {rows.map((object, i) => <option value={i + 1} key={i + 1}> {i + 1}</option> )}
-
+                        const handleSelectorChange = (e) => {
+                            setSelector(parseInt(e.target.value));
+                            };
+                        const handleAddToCart = () => {
+                            console.log("PRODUCT in handle add to cart", product)
+                        onAdd(product, qtySelector);
+                        };
+                        return(
+                        <li key={product.id}>
+                        {product.name} ${product.price} size: {product.size} quantity:{product.quantity - cartAmount}
+                        <select value={qtySelector} onChange={handleSelectorChange}>
+                            {rows.map((option) => option )}
                         </select>
-                        {pantCartQty() < product.quantity ? <button onClick={() => {(localStorage.setItem("localQty",qtySelector));
-                        onAdd(pant[0],localStorage.getItem("localQty"),pantCartQty()) }} >Add </button> : <h3>Sorry {product.name} is unavailable.</h3> }
-                        
+                        {cartAmount< product.quantity ? (
+                            <button onClick={handleAddToCart} >Add </button> ):(
+                            <h3>You have the maximum boards in your cart available</h3>
+                        )}    
                         </li>
                     )
                 })}

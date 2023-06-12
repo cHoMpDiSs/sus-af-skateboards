@@ -1,18 +1,16 @@
 
-import schemas from "./schemas.mjs";
+import models from "./models/models.js";
 import path from "path"
 import express, { json } from "express"
 import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import bodyParser from "body-parser";
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express(); // create express app
 
-
-const urlencodedParser = bodyParser.urlencoded({extended: false})
+// const urlencodedParser = bodyParser.urlencoded({extended: false})
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -20,10 +18,9 @@ app.use(bodyParser.json())
 mongoose.connect("mongodb://127.0.0.1:27017/susafDB")
 
 
-
-const Pants = mongoose.model('Pant', schemas.pantsSchema)
-const Skateboards = mongoose.model('Skateboard', schemas.skateboardSchema)
-const Tshirts = mongoose.model('Tshirt', schemas.tshirtSchema)
+const Pants = mongoose.model('Pant', models.pantsSchema)
+const Skateboards = mongoose.model('Skateboard', models.skateboardSchema)
+const Tshirts = mongoose.model('Tshirt', models.tshirtSchema)
 
 const susBaggiesM = new Pants({
   product: "pants",
@@ -63,6 +60,15 @@ const susBasicDeck8 = new Skateboards({
   instock: true
 });
 
+const susBasicDeck863 = new Skateboards({
+  product: "skateboards",
+  name: "SUS AF Minimalist",
+  size: "8.63",
+  price: 45,
+  quantity: 15,
+  instock: true
+});
+
 const tShirtWhite = new Tshirts({
   product: "shirts",
   name: "Plain White smiley Tee ",
@@ -75,9 +81,15 @@ const tShirtWhite = new Tshirts({
 
 // tShirtWhite.save();
 // susBaggiesM.save();
+// susBasicDeck863.save();
+// susBasicDeck85.save();
 // susBasicDeck83.save();
 // susBasicDeck8.save()
 // add middlewares
+
+
+
+
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 
@@ -177,7 +189,6 @@ app.patch('/api/pants/:id', async (req, res) => {
   app.get('*',(req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
-
 
 
 // start express server on port 5000

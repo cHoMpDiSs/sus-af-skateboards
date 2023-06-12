@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 
 
-function Shirts(props){
+const Shirts = (props) =>{
     const [shirt, setShirt] = useState([]);
     const {product, onAdd, cartItems} = props;
     useEffect(()=>{
@@ -22,25 +22,16 @@ function Shirts(props){
     setShirt(await response.json())
 }
 
-function shirtCartQty(){
+const shirtCartQty = (prodcuctId) =>{
     let shirtCartItems = 0;
+    console.log(cartItems, "CART ITEMS IN SHIRTCARTQTY")
     for (let i = 0; i < cartItems.length; i++){
-        if ( cartItems[i].name === shirt[0].name){
+        if ( prodcuctId === cartItems[i]._id){
             shirtCartItems = shirtCartItems + parseInt(cartItems[i].quantity);
-            console.log("shirtCart Items in func", shirtCartItems);
-            console.log(shirt[0].name)
+            console.log("Shirt Cart Items in func", shirtCartItems);
         }
     } return(shirtCartItems);
 }
-
-
-
-console.log("rows" + rows)
-
-
-const rows = [];
-
-
 
     return(
         <div>
@@ -48,21 +39,28 @@ const rows = [];
             <h3>Shirts</h3>
             <ol>
                 {shirt.map((product)=>{
-                    for (let i = 1; i <= product.quantity - shirtCartQty(); i++){
-                        rows.push(<option value={i}>i</option>)
+                    const cartAmount = shirtCartQty(product._id)
+                    const rows = [];
+                    for (let i = 1; i <= product.quantity - cartAmount; i++){
+                        rows.push(<option value={i} key={i}>{i}</option>)
                         } 
-                        
-                    return(
-                        <li key={product.id}>{product.name} ${product.price} quantity:{product.quantity - shirtCartQty()}
-                        <select
-
-                        onChange={(e) => setSelector(e.target.value)}>
-                            {rows.map((object, i) => <option value={i + 1} key={i + 1}> {i + 1}</option> )}
-
+                        const handleSelectorChange = (e) => {
+                            setSelector(parseInt(e.target.value));
+                            };
+                        const handleAddToCart = () => {
+                            console.log("PRODUCT in handle add to cart", product)
+                        onAdd(product, qtySelector);
+                        };
+                        return(
+                        <li key={product.id}>
+                        {product.name} ${product.price} size: {product.size} quantity:{product.quantity - cartAmount}
+                        <select value={qtySelector} onChange={handleSelectorChange}>
+                            {rows.map((option) => option )}
                         </select>
-                        {shirtCartQty() < product.quantity ? <button onClick={() => {(localStorage.setItem("localQty",qtySelector));
-                        onAdd(shirt[0],localStorage.getItem("localQty"),shirtCartQty()) }} >Add </button> : <h3>You have the maximum shirts in your cart available</h3> }
-                        
+                        {cartAmount< product.quantity ? (
+                            <button onClick={handleAddToCart} >Add </button> ):(
+                            <h3>You have the maximum boards in your cart available</h3>
+                        )}    
                         </li>
                     )
                 })}

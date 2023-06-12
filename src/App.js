@@ -9,21 +9,24 @@ import Cart from "./components/Cart";
 import Thank from "./components/Thank";
 
 
-function App(){
+const App = () =>{
   const [checkOutItems, setCheckOutItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   
   const onAdd = (product, productQty) =>{
     const exist = cartItems.find(x => x._id === product._id);
+      console.log(exist, "exist")
+      console.log("CART ITEMS", cartItems)
      if(exist && product.quantity >= productQty){
       let newArr = [...cartItems];
-        for(let i = 0; i < cartItems.length; i++){
-          if (cartItems[i].id === product.id){
-              newArr[i].quantity = parseInt(productQty) + parseInt(cartItems[i].quantity);
+        for(let i = 0; i < newArr.length; i++){
+          if (newArr[i]._id === product._id){
+            console.log("NEW ARR", newArr._id)
+            console.log("PRODUCT ID", product._id)
+            newArr[i].quantity = parseInt(productQty) + parseInt(newArr[i].quantity);
         }};
         setCartItems(newArr);
         console.log(cartItems + " adding more cart items.");
-
       }else{
         setCartItems([...cartItems, {...product, quantity:parseInt(productQty)}]);
         console.log(cartItems+" empty cart or new item being added")
@@ -36,11 +39,11 @@ const onRemove = (product) =>{
   let newCartArr = [... cartItems];
   let newCheckOutArr = [... checkOutItems]
   for(let i = 0; i < cartItems.length; i++){
-    if (cartItems[i].name === product.name){
+    if (cartItems[i]._id === product._id){
         newCartArr[i].quantity --;
         if(cartItems[i].quantity === 0){
-         newCartArr.splice(i,1)
-         newCheckOutArr.splice(i,1)
+         newCartArr.splice(i,i+1)
+         newCheckOutArr.splice(i,i+1)
         }
     }
     setCheckOutItems(newCheckOutArr)
@@ -48,7 +51,7 @@ const onRemove = (product) =>{
 }
 }
 
-let checkOut = (products) => {
+const checkOut = (products) => {
  
   for(let i = 0; i < checkOutItems.length; i++){
     if (products[i].id === checkOutItems[i].id ){  // this was cartitems.id

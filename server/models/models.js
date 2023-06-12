@@ -1,5 +1,5 @@
 
-const schemas = {
+const models = {
   
  skateboardSchema:{
       
@@ -36,4 +36,4 @@ const schemas = {
     }
 
 }
-  export default schemas;
+  export default models;

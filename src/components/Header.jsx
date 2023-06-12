@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Header(){
+const Header = () =>{
     return (
         <h1>SUS AF SKATEBOARDS</h1>
     );

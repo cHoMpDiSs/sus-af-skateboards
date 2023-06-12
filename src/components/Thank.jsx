@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
-function Thank(){
+const Thank = () =>{
    
 
 return(
