@@ -2,6 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar/Navbar";
 
 
 const Skateboards = (props) =>{
@@ -35,7 +36,7 @@ const boardCartQty = (prodcuctId) =>{
 
     return(
         <div>
-            <Link to="/">Home</Link>
+            <Navbar/>
             <h3>Skateboards</h3>
             <ol>
                 {skateboard.map((product)=>{
