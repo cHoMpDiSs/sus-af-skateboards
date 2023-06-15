@@ -1,20 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom"
 import Header from "../components/Header";
 
 const Shirts = (props) =>{
     const [shirt, setShirt] = useState([]);
-    const {product, onAdd, cartItems} = props;
+    const {onAdd, cartItems} = props;
     useEffect(()=>{
     shirts()
     },[])
 
     const [qtySelector, setSelector] = useState(1);
-    const selectorValue = (qty) =>{
-        setSelector();
-    }
-
+  
 
     const shirts = async () =>{
     const response = await fetch('http://localhost:5000/api/shirts');

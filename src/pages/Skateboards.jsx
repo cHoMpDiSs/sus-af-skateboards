@@ -1,8 +1,6 @@
-
 import React from "react";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
 
 const Skateboards = (props) =>{
     const [skateboard, setSkateboard] = useState([]);
@@ -12,9 +10,7 @@ const Skateboards = (props) =>{
     skateboards()
     },[]) 
     const [qtySelector, setSelector] = useState(1);
-    const selectorValue = (qty) =>{
-        setSelector(qty);
-    }
+
     const skateboards = async () =>{
     const response = await fetch('http://localhost:5000/api/skateboards');
     setSkateboard(await response.json())
@@ -36,7 +32,7 @@ const boardCartQty = (prodcuctId) =>{
     return(
         <div>
             <Header/>
-            <h3>Skateboards</h3>
+            <h2 className="mb-4 text-4xl font-extrabold ">Skateboards</h2>
             <ol>
                 {skateboard.map((product)=>{
                     const cartAmount = boardCartQty(product._id);
@@ -52,16 +48,21 @@ const boardCartQty = (prodcuctId) =>{
                         onAdd(product, qtySelector);
                         };
                         return(
-                        <li key={product._id}>
-                        {product.name} ${product.price} size: {product.size} quantity:{product.quantity - cartAmount}
-                        <select value={qtySelector} onChange={handleSelectorChange}>
+                            <div>
+                        <li className="text-lg text-left py-1 px-2 list-outside" key={product._id}>
+                        {product.name} ${product.price} size: {product.size}  quantity:{product.quantity - cartAmount}
+                        
+                        <select className="bg-grey border border-black  py-0.75 px-1 ms-2 relative "   onChange={handleSelectorChange}  >
                             {rows.map((option) => option )}
                         </select>
+                        </li>
                         {cartAmount< product.quantity ? (
-                            <button onClick={handleAddToCart} >Add </button> ):(
+                            <button onClick={handleAddToCart}
+                            className="bg-transparent hover:bg-black-400 text-black-700 font-semibold hover:text-white py-.75 px-2 ms-2 border border-black hover:border-transparent rounded" >Add </button> ):(
                             <h3>You have the maximum boards in your cart available</h3>
                         )}    
-                        </li>
+                        
+                        </div>
                 )}
                 )}
             </ol>

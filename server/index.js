@@ -74,7 +74,7 @@ const susBasicDeck863 = new Skateboards({
 const tShirtWhite = new Tshirts({
   product: "shirts",
   name: "Plain White smiley Tee ",
-  size: "L",
+  size: "xL",
   price: 19.99,
   quantity: 10,
   description: "",
