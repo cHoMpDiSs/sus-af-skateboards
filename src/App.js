@@ -1,12 +1,13 @@
+
 import React, { StrictMode, useEffect } from "react";
 import { useState } from "react";
 import {Route, Routes} from "react-router-dom"
-import Pants from "./components/Pants";
-import Shirts from "./components/Shirts";
-import Main from "./components/Main";
-import Skateboards from "./components/Skateboards";
-import Cart from "./components/Cart";
-import Thank from "./components/Thank";
+import Pants from "./pages/Pants";
+import Shirts from "./pages/Shirts";
+import Main from "./pages/Main";
+import Skateboards from "./pages/Skateboards";
+import Cart from "./pages/Cart";
+import Thank from "./pages/Thank";
 
 
 const App = () =>{
@@ -36,8 +37,8 @@ const App = () =>{
   };
 
 const onRemove = (product) =>{
-  let newCartArr = [... cartItems];
-  let newCheckOutArr = [... checkOutItems]
+  let newCartArr = [...cartItems];
+  let newCheckOutArr = [...checkOutItems]
   for(let i = 0; i < cartItems.length; i++){
     if (cartItems[i]._id === product._id){
         newCartArr[i].quantity --;
@@ -54,7 +55,7 @@ const onRemove = (product) =>{
 const checkOut = (products) => {
  
   for(let i = 0; i < checkOutItems.length; i++){
-    if (products[i].id === checkOutItems[i].id ){  // this was cartitems.id
+    if (products[i]._id === checkOutItems[i]._id ){  // this was cartitems.id
       let idString = products[i]._id;
       let typeString = products[i].product;
       console.log("CHECK OUT ITEM", checkOutItems[i])
@@ -87,9 +88,9 @@ const checkOut = (products) => {
   }
     
   return(
-  
+     
       <Routes>
-        <Route path="/" element={<Main onAdd={onAdd}/>}/>
+        <Route path="/" element={<Main onAdd={onAdd} cartItems={cartItems}/>}/>
         <Route path="/pants" element={<Pants onAdd={onAdd} cartItems={cartItems}/>}/>
         <Route path="/shirts" element={<Shirts onAdd={onAdd} cartItems={cartItems}/>}/>
         <Route path="/skateboards" element={<Skateboards onAdd={onAdd} cartItems={cartItems}/>}/>
@@ -97,7 +98,7 @@ const checkOut = (products) => {
         setCartItems={setCartItems} checkOutItems={checkOutItems} onRemove={onRemove} checkOut={checkOut} ></Cart>}/>
         <Route path="/thankyou" element={<Thank/>}/>
       </Routes>
-      
+    
   )
   
   }

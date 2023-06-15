@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -9,14 +9,11 @@ const Thank = () =>{
 
 return(
     <div>
-    <Link to="/">Home</Link>
+    <NavLink to="/">Home</NavLink>
     <h1>THANK YOU FOR YOUR PURCHASE</h1>
     </div>
 )
 }
-
-
-
 
 
 

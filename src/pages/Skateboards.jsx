@@ -1,9 +1,8 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
+import Header from "../components/Header";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar/Navbar";
-
 
 const Skateboards = (props) =>{
     const [skateboard, setSkateboard] = useState([]);
@@ -36,7 +35,7 @@ const boardCartQty = (prodcuctId) =>{
 
     return(
         <div>
-            <Navbar/>
+            <Header/>
             <h3>Skateboards</h3>
             <ol>
                 {skateboard.map((product)=>{
@@ -53,7 +52,7 @@ const boardCartQty = (prodcuctId) =>{
                         onAdd(product, qtySelector);
                         };
                         return(
-                        <li key={product.id}>
+                        <li key={product._id}>
                         {product.name} ${product.price} size: {product.size} quantity:{product.quantity - cartAmount}
                         <select value={qtySelector} onChange={handleSelectorChange}>
                             {rows.map((option) => option )}

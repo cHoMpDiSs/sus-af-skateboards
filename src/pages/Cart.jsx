@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 
 
@@ -10,9 +11,12 @@ const Cart = (props) =>{
     const navigateToThankYou = () => {
         navigate('/thankyou');
     };
+    console.log("CART ITEMS IN CART", cartItems)
     return(
+    <div>
+   <Header/>
     <aside className="block col-1">
-        <Link to="/">Home</Link>
+        
         <h3>Cart Items</h3>
         <div>
             {cartItems.length === 0 && <div>Cart is empty </div>}
@@ -39,8 +43,9 @@ const Cart = (props) =>{
                 
             </div>
         ))}
-        {cartItems.length != 0 && <button onClick={()=>{checkOut(cartItems);navigateToThankYou()}}>Check Out</button>}
+        {cartItems.length !== 0 && <button onClick={()=>{checkOut(cartItems);navigateToThankYou()}}>Check Out</button>}
     </aside>
+    </div>
 )};
 
 

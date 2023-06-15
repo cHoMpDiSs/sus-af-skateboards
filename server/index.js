@@ -5,11 +5,13 @@ import express, { json } from "express"
 import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import bodyParser from "body-parser";
+import cors from "cors"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express(); // create express app
 
+app.use(cors());
 // const urlencodedParser = bodyParser.urlencoded({extended: false})
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -85,11 +87,10 @@ const tShirtWhite = new Tshirts({
 // susBasicDeck85.save();
 // susBasicDeck83.save();
 // susBasicDeck8.save()
+
+
+
 // add middlewares
-
-
-
-
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 

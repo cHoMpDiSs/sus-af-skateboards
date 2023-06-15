@@ -1,48 +1,49 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import Header from "../components/Header";
 
 
-const Shirts = (props) =>{
-    const [shirt, setShirt] = useState([]);
+const Pants = (props) =>{
+    const [pant, setPant] = useState([]);
     const {product, onAdd, cartItems} = props;
-    useEffect(()=>{
-    shirts()
+    useEffect(() =>{
+    pants()
     },[])
-
+    
     const [qtySelector, setSelector] = useState(1);
     const selectorValue = (qty) =>{
         setSelector();
     }
 
+    const pants = async () =>{
+    const response = await fetch('http://localhost:5000/api/pants');
 
-    const shirts = async () =>{
-    const response = await fetch('http://localhost:5000/api/shirts');
+    setPant(await response.json())
+    }
 
-    setShirt(await response.json())
-}
+    const pantCartQty = (prodcuctId) =>{
+        let pantCartItems = 0;
+        for (let i = 0; i < cartItems.length; i++){
+            if ( prodcuctId === cartItems[i]._id){
+                pantCartItems = pantCartItems + parseInt(cartItems[i].quantity);
+                console.log("boardCart Items in func", pantCartItems);
+            }
+        } return(pantCartItems);
+    }
 
-const shirtCartQty = (prodcuctId) =>{
-    let shirtCartItems = 0;
-    console.log(cartItems, "CART ITEMS IN SHIRTCARTQTY")
-    for (let i = 0; i < cartItems.length; i++){
-        if ( prodcuctId === cartItems[i]._id){
-            shirtCartItems = shirtCartItems + parseInt(cartItems[i].quantity);
-            console.log("Shirt Cart Items in func", shirtCartItems);
-        }
-    } return(shirtCartItems);
-}
+
 
     return(
         <div>
-        <Link to="/">Home</Link>
-            <h3>Shirts</h3>
+        <Header/>
+            <h3>Pants</h3>
             <ol>
-                {shirt.map((product)=>{
-                    const cartAmount = shirtCartQty(product._id)
+                {pant.map((product)=>{
+                    const cartAmount = pantCartQty(product._id);
                     const rows = [];
-                    for (let i = 1; i <= product.quantity - cartAmount; i++){
-                        rows.push(<option value={i} key={i}>{i}</option>)
+                    for (let i = 1; i <= product.quantity - pantCartQty(); i++){
+                        rows.push(<option value={i}>{i}</option>)
                         } 
                         const handleSelectorChange = (e) => {
                             setSelector(parseInt(e.target.value));
@@ -52,7 +53,7 @@ const shirtCartQty = (prodcuctId) =>{
                         onAdd(product, qtySelector);
                         };
                         return(
-                        <li key={product.id}>
+                        <li key={product._id}>
                         {product.name} ${product.price} size: {product.size} quantity:{product.quantity - cartAmount}
                         <select value={qtySelector} onChange={handleSelectorChange}>
                             {rows.map((option) => option )}
@@ -67,7 +68,7 @@ const shirtCartQty = (prodcuctId) =>{
             </ol>
         </div>
     )
-}
+    }
 
 
-export default Shirts;
+export default Pants;
