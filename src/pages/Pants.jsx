@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
-
+import Card from "../components/Card";
 
 const Pants = (props) =>{
     const [pant, setPant] = useState([]);
@@ -31,8 +31,8 @@ const Pants = (props) =>{
     return(
         <div>
         <Header/>
-            <h3>Pants</h3>
-            <ol>
+            <h2 className="mb-4 text-4xl font-extrabold">Pants</h2>
+            <div className="h-56 grid grid-cols-3 gap-4 content-start">
                 {pant.map((product)=>{
                     const cartAmount = pantCartQty(product._id);
                     const rows = [];
@@ -47,22 +47,33 @@ const Pants = (props) =>{
                         onAdd(product, qtySelector);
                         };
                         return(
-                        <li key={product._id}>
-                        {product.name} ${product.price} size: {product.size} quantity:{product.quantity - cartAmount}
-                        <select value={qtySelector} onChange={handleSelectorChange}>
+                            <div className="align center py-10 px-10">
+
+                            <div className="text-lg py-1 px-2" key={product._id}>
+                            <Card
+                            name = {product.name}
+                            size = {product.size}
+                            price = {product.price}
+                            quantity = {product.quantity -  cartAmount}
+                            />
+                        <select className="bg-grey border border-black  py-0.75 px-1 ms-2 relative"  value={qtySelector} onChange={handleSelectorChange}>
                             {rows.map((option) => option )}
                         </select>
+                        </div>
                         {cartAmount< product.quantity ? (
-                            <button onClick={handleAddToCart} >Add </button> ):(
+                            <button onClick={handleAddToCart} 
+                            className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
+                            py-.75 px-2 ms-2 border border-black hover:border-transparent rounded" 
+                            >Add </button> ):(
                             <h3>You have the maximum boards in your cart available</h3>
                         )}    
-                        </li>
-                    )
-                })}
-            </ol>
+                        </div>
+                    )}
+                    )}
+            </div>
         </div>
     )
-    }
+ }
 
 
 export default Pants;

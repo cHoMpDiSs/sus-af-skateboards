@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
+import Card from "../components/Card";
+
 
 const Skateboards = (props) =>{
     const [skateboard, setSkateboard] = useState([]);
@@ -33,7 +35,7 @@ const boardCartQty = (prodcuctId) =>{
         <div>
             <Header/>
             <h2 className="mb-4 text-4xl font-extrabold ">Skateboards</h2>
-            <ol>
+            <div className="h-56 grid grid-cols-3 gap-4 content-start">
                 {skateboard.map((product)=>{
                     const cartAmount = boardCartQty(product._id);
                     const rows = [];
@@ -46,26 +48,35 @@ const boardCartQty = (prodcuctId) =>{
                         const handleAddToCart = () => {
                             console.log("PRODUCT in handle add to cart", product)
                         onAdd(product, qtySelector);
+                        setSelector(1);
                         };
                         return(
-                            <div>
-                        <li className="text-lg text-left py-1 px-2 list-outside" key={product._id}>
-                        {product.name} ${product.price} size: {product.size}  quantity:{product.quantity - cartAmount}
-                        
-                        <select className="bg-grey border border-black  py-0.75 px-1 ms-2 relative "   onChange={handleSelectorChange}  >
+                            <div className="align center py-10 px-10">
+
+                        <div className="text-lg py-1 px-2" key={product._id}>
+
+                        <Card
+                        name = {product.name}
+                        size = {product.size}
+                        price = {product.price}
+                        quantity = {product.quantity -  cartAmount}
+                        />
+                        <select className="bg-grey border border-black  py-0.75 px-1 ms-2 relative"   onChange={handleSelectorChange}  >
                             {rows.map((option) => option )}
                         </select>
-                        </li>
+                        </div>
                         {cartAmount< product.quantity ? (
                             <button onClick={handleAddToCart}
-                            className="bg-transparent hover:bg-black-400 text-black-700 font-semibold hover:text-white py-.75 px-2 ms-2 border border-black hover:border-transparent rounded" >Add </button> ):(
+                            className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
+                             py-.75 px-2 ms-2 border border-black hover:border-transparent rounded" >
+                            Add </button> ):(
                             <h3>You have the maximum boards in your cart available</h3>
                         )}    
                         
                         </div>
                 )}
                 )}
-            </ol>
+            </div>
         </div>
     )
 }
