@@ -13,36 +13,47 @@ const Cart = (props) =>{
     return(
     <div>
    <Header/>
-    <aside className="block col-1">
-        
-        <h3>Cart Items</h3>
-        <div>
+   <h2 className="mb-4 ml-9 text-4xl font-extrabold ">Your Cart</h2>
+   <div className="flex flex-col items-center ">
+    <div className="ml-5 flex-grow">      
             {cartItems.length === 0 && <div>Cart is empty </div>}
-        </div>
         {cartItems.map((item, index) => (
-            <div key={item._id} className="row">
-                <div className="col-2">{item.name}</div>
-                <div className="col-2">
-                    {item.quantity > 0 && <div>{item.quantity} x ${item.price}</div>}
-                </div>
-                <div className="col-2">
-                    {item.quantity > 0 ? <div>
-                    {item.quantity < checkOutItems[index].quantity? <div>
-                    <button onClick={()=>onRemove(item)} className="remove">-</button>
-                    <button onClick={()=>onAdd(item,1)} className="add">+</button>
-                    </div>
-                     : <div>
-                     <button onClick={()=>onRemove(item)} className="remove">-</button>
-                     <p>You have the maximum {item.name} available</p></div>}
-                     </div>
-                    : <div></div>}
+            <div key={item._id} className="text-center">
+                <div className="relative mb-6 flex flex-col items-center">
+                <div className="absolute bottom-full ">{item.name}</div>
+             
+                        <img width="15%" src="images/deck.png" alt="deck"></img>
                     
+                        <div>
+                        {item.quantity} x ${item.price}                        
+                    {item.quantity < checkOutItems[index].quantity? <div>
+                    <button className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
+                             py-.75 px-2 ms-2 border border-black hover:border-transparent rounded" 
+                             onClick={()=>onRemove(item)}>-</button>
+                    <button className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
+                             py-.75 px-2 ms-2 border border-black hover:border-transparent rounded " 
+                             onClick={()=>onAdd(item,1)}>+</button>
+                    </div>
+                     : <div className="flex items-center justify-center">
+                     <button className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
+                             py-.75 px-2 ms-2 border border-black hover:border-transparent rounded"
+                             onClick={()=>onRemove(item)}>-</button>
+                     <p>You have the maximum {item.name} available</p>
+                     </div>}
+                     </div> 
+                     </div>  
                 </div>
-                
-            </div>
+           
         ))}
-        {cartItems.length !== 0 && <button onClick={()=>{checkOut(cartItems);navigateToThankYou()}}>Check Out</button>}
-    </aside>
+  
+        
+        </div>
+        <div className="ml-auto px-20 pb-20 flex justify-end ">
+        {cartItems.length !== 0 && <button className="mr-auto bg-transparent hover:bg-black-400 text-black-700  font-semibold
+                        py-.75 px-2 border border-black hover:border-transparent rounded "
+                      onClick={()=>{checkOut(cartItems);navigateToThankYou()}}>Check Out</button>}
+            </div>
+        </div>
     </div>
 )};
 

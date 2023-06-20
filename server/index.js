@@ -35,6 +35,17 @@ const susBaggiesM = new Pants({
   instock: true
 });
 
+const susBaggiesL = new Pants({
+  product: "pants",
+  name: "90's baggy jeans",
+  size: "Large",
+  color: "Black",
+  price: 80,
+  description: "Bring back the 90's skate scene with this classic cut.",
+  quantity: 5,
+  instock: true
+});
+
 const susBasicDeck85 = new Skateboards({
   product: "skateboards",
   name: "SUS AF Minimalist",
@@ -87,7 +98,7 @@ const tShirtWhite = new Tshirts({
 // susBasicDeck85.save();
 // susBasicDeck83.save();
 // susBasicDeck8.save()
-
+// susBaggiesL.save()
 
 
 // add middlewares

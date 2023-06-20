@@ -20,15 +20,23 @@ const Shirts = (props) =>{
 
 const shirtCartQty = (prodcuctId) =>{
     let shirtCartItems = 0;
-    console.log(cartItems, "CART ITEMS IN SHIRTCARTQTY")
+ 
     for (let i = 0; i < cartItems.length; i++){
         if ( prodcuctId === cartItems[i]._id){
             shirtCartItems = shirtCartItems + parseInt(cartItems[i].quantity);
-            console.log("Shirt Cart Items in func", shirtCartItems);
+            console.log("shirtCart Items in func", shirtCartItems);
         }
     } return(shirtCartItems);
 }
 
+const handleSelectorChange = (e) => {
+    setSelector(parseInt(e.target.value));
+    };
+const handleAddToCart = (product) => {
+    console.log("PRODUCT in handle add to cart", product)
+    onAdd(product, qtySelector);
+    setSelector(1);
+};
     return(
         <div>
        <Header/>
@@ -40,35 +48,29 @@ const shirtCartQty = (prodcuctId) =>{
                     for (let i = 1; i <= product.quantity - cartAmount; i++){
                         rows.push(<option value={i} key={i}>{i}</option>)
                         } 
-                        const handleSelectorChange = (e) => {
-                            setSelector(parseInt(e.target.value));
-                            };
-                        const handleAddToCart = () => {
-                            console.log("PRODUCT in handle add to cart", product)
-                        onAdd(product, qtySelector);
-                        };
                         return(
-                            <div className="align center py-10 px-10">
-                        <div className="text-lg py-1 px-2" key={product._id}>
+                            <div key={product._id} className="align center py-10 px-10">
+                            <div className="text-lg py-1 px-2" >
 
-                        <Card
-                        name = {product.name}
-                        size = {product.size}
-                        price = {product.price}
-                        quantity = {product.quantity -  cartAmount}
-                        />
-                        <select className="bg-grey border border-black  py-0.75 px-1 ms-2 relative "value={qtySelector} onChange={handleSelectorChange}>
-                            {rows.map((option) => option )}
-                        </select>
-                        </div>
-                        {cartAmount< product.quantity ? (
-                            <button onClick={handleAddToCart}
-                            className="bg-transparent hover:bg-black-400 text-black-700 font-semibold 
-                            py-.75 px-2 ms-2 border border-black hover:border-transparent rounded">
-                            Add </button> ):(
-                            <h3>You have the maximum boards in your cart available</h3>
-                        )}    
-                        </div>
+                            <Card
+                            key={product._id}
+                            name = {product.name}
+                            size = {product.size}
+                            price = {product.price}
+                            quantity = {product.quantity -  cartAmount}
+                            />
+                            <select name="qSelector" className="bg-grey border border-black  py-0.75 px-1 ms-2 relative "value={qtySelector} onChange={handleSelectorChange}>
+                                {rows.map((option) => option )}
+                            </select>
+                            </div>
+                            {cartAmount< product.quantity ? (
+                                <button onClick={() => handleAddToCart(product)}
+                                className="bg-transparent hover:bg-black-400 text-black-700 font-semibold 
+                                py-.75 px-2 ms-2 border border-black hover:border-transparent rounded">
+                                Add </button> ):(
+                                <h3>You have the maximum boards in your cart available</h3>
+                            )}    
+                            </div>
                     )
                 })}
             </div>

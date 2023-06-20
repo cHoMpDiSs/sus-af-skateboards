@@ -2,10 +2,10 @@ import React from "react";
 
 
 const Card = (props) => {
-    const {name, price, size, quantity } = props;
+    const {name, price, size, quantity} = props;
 return(
 <div>
-    <img width="20%" src="images/deck.png" alt="deck"></img>
+    <img width="100px" src="images/deck.png" alt="deck"></img>
     <p>{name}</p>
     <p>{size}</p>
     <p>$ {price}</p>
