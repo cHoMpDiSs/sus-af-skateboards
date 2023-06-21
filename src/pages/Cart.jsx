@@ -46,7 +46,6 @@ const Cart = (props) =>{
            
         ))}
   
-        
         </div>
         <div className="ml-auto px-20 pb-20 flex justify-end ">
         {cartItems.length !== 0 && <button className="mr-auto bg-transparent hover:bg-black-400 text-black-700  font-semibold

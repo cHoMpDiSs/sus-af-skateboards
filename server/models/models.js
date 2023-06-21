@@ -5,34 +5,52 @@ const models = {
       
       product: String,
       name: String,
-      size: String,
-      price: Number,
-      quantity: Number,
-      instock: Boolean
+      attributes: {
+        size: String,
+        quantity: String},
+      price: Number
     },
     
      pantsSchema:{
      
       product: String,
       name: String,
-      size: String,
+      sizes : {small: {
+        size: String,
+        quantity: String
+      },
+      medium: {
+        size: String,
+        quantity: String
+      },
+      large: {
+        size: String,
+        quantity: String
+      }},
       color: String,
       price: Number,
-      description: String,
-      quantity: Number,
-      instock: Boolean
+      description: String
     },
 
     tshirtSchema:{
      
       product: String,
       name: String,
-      size: String,
+      small: {
+        size: String,
+        quantity: String
+      },
+      medium: {
+        size: String,
+        quantity: String
+      },
+      large: {
+        size: String,
+        quantity: String
+      },
       color: String,
       price: Number,
-      description: String,
-      quantity: Number,
-      instock: Boolean
+      description: String
     }
 
 }

@@ -14,27 +14,53 @@ const App = () =>{
   const [checkOutItems, setCheckOutItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   
-  const onAdd = (product, productQty) =>{
+  // const onAdd = (product, productQty) =>{
+  //   const exist = cartItems.find(x => x._id === product._id);
+  //     console.log(exist, "exist")
+  //     console.log("CART ITEMS", cartItems)
+  //    if(exist && product.quantity >= productQty){
+  //     let newArr = [...cartItems];
+  //       for(let i = 0; i < newArr.length; i++){
+  //         if (newArr[i]._id === product._id){
+  //           console.log("NEW ARR", newArr._id)
+  //           console.log("PRODUCT ID", product._id)
+  //           newArr[i].quantity = parseInt(productQty) + parseInt(newArr[i].quantity);
+  //       }};
+  //       setCartItems(newArr);
+  //       console.log(cartItems + " adding more cart items.");
+  //     }else{
+  //       setCartItems([...cartItems, {...product, quantity:parseInt(productQty)}]);
+  //       console.log(cartItems+" empty cart or new item being added")
+  //       setCheckOutItems([...checkOutItems, product])
+  //       console.log("SET CHECKOUT ITEMS", checkOutItems)
+  //     };
+  // };
+
+  const onAdd = (product, size) =>{
     const exist = cartItems.find(x => x._id === product._id);
       console.log(exist, "exist")
-      console.log("CART ITEMS", cartItems)
-     if(exist && product.quantity >= productQty){
+      // console.log("CART ITEMS", cartItems)
+     if(exist && product.sizes[size].quantity >= 1){
       let newArr = [...cartItems];
         for(let i = 0; i < newArr.length; i++){
           if (newArr[i]._id === product._id){
             console.log("NEW ARR", newArr._id)
             console.log("PRODUCT ID", product._id)
-            newArr[i].quantity = parseInt(productQty) + parseInt(newArr[i].quantity);
+            newArr[i].sizes[size].quantity --
         }};
         setCartItems(newArr);
         console.log(cartItems + " adding more cart items.");
       }else{
-        setCartItems([...cartItems, {...product, quantity:parseInt(productQty)}]);
+        setCartItems([...cartItems, {product, size, quantity:1}]);
         console.log(cartItems+" empty cart or new item being added")
         setCheckOutItems([...checkOutItems, product])
         console.log("SET CHECKOUT ITEMS", checkOutItems)
       };
   };
+
+console.log(checkOutItems, "CHECK OUT ITEMS")
+console.log(cartItems, "CART ITEMS")
+
 
 const onRemove = (product) =>{
   let newCartArr = [...cartItems];
@@ -52,14 +78,19 @@ const onRemove = (product) =>{
 }
 }
 
-const checkOut = (products) => {
- 
-  for(let i = 0; i < checkOutItems.length; i++){
-    if (products[i]._id === checkOutItems[i]._id ){  // this was cartitems.id
-      let idString = products[i]._id;
-      let typeString = products[i].product;
-      console.log("CHECK OUT ITEM", checkOutItems[i])
-      console.log("THIS IS THE ITEM TO BE STORED IN DATABASE", checkOutItems[i].quantity - products[i].quantity)
+const checkOut = (products,size) => {
+ console.log(checkOutItems, "CHECK OUT ITEMS IN CHECKOUT")
+ console.log(cartItems, "CART ITEMS IN CHECKOUT")
+  for(let i = 0; i < products.length; i++){
+    // if (products[i].product._id === cartItems[i]._id ){  // this was cartitems.id
+      let idString = products[i].product._id;
+      let typeString = products[i].product.product;
+      console.log(typeString, "TYPE STRING")
+      console.log(idString, "ID STRING")
+      let productSize = products[i].product.size;
+      // console.log("CHECK OUT ITEM", checkOutItems[i])
+      let newVal = cartItems[i].product.sizes["small"].quantity - products[i].quantity
+      console.log("THIS IS THE ITEM TO BE STORED IN DATABASE", cartItems[i].product.sizes["small"].quantity - products[i].quantity)
       
       fetch("http://localhost:5000/api/"+ typeString + "/" + idString , {
         headers: {
@@ -68,7 +99,12 @@ const checkOut = (products) => {
           },
           method: "PATCH",	
           body: JSON.stringify({
-          quantity: checkOutItems[i].quantity - products[i].quantity
+            sizes: {
+              [productSize]: {
+                quantity: newVal 
+              }
+            }
+          // quantity: checkOutItems[i].quantity - products[i].quantity
           })
         })
           .then(function (response) {
@@ -79,10 +115,10 @@ const checkOut = (products) => {
           });
         
     }
-    else{
-      console.log(products[i].name, " Does not match ", checkOutItems[i].name)
-    }
-    } 
+    // else{
+    //   console.log(products[i]._id, " Does not match ", checkOutItems[i]._id)
+    // }
+    // } 
     setCheckOutItems([])
     setCartItems([])
   }

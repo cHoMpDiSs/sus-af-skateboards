@@ -24,15 +24,24 @@ const Pants = mongoose.model('Pant', models.pantsSchema)
 const Skateboards = mongoose.model('Skateboard', models.skateboardSchema)
 const Tshirts = mongoose.model('Tshirt', models.tshirtSchema)
 
-const susBaggiesM = new Pants({
+const susBaggies = new Pants({
   product: "pants",
   name: "90's baggy jeans",
-  size: "Medium",
+  sizes : { small: {
+    size: "Small",
+    quantity: 15
+  },
+  medium: {
+    size: "Medium",
+    quantity: 15
+  },
+  large: {
+    size: "Large",
+    quantity: 15
+  }},
   color: "Black",
   price: 80,
   description: "Bring back the 90's skate scene with this classic cut.",
-  quantity: 5,
-  instock: true
 });
 
 const susBaggiesL = new Pants({
@@ -93,7 +102,7 @@ const tShirtWhite = new Tshirts({
 });
 
 // tShirtWhite.save();
-// susBaggiesM.save();
+// susBaggies.save();
 // susBasicDeck863.save();
 // susBasicDeck85.save();
 // susBasicDeck83.save();
@@ -106,6 +115,15 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 
 app.get('/api/pants', async (req, res) => {
+  try{
+    const allPants = await Pants.find({});
+    res.send(allPants);
+  }catch (err){
+    res.send(err)
+  }
+})
+
+app.get('/api/pants:id', async (req, res) => {
   try{
     const allPants = await Pants.find({});
     res.send(allPants);
@@ -182,13 +200,16 @@ app.patch('/api/shirts/:id', async (req, res) => {
   } 
   });
 
+
+// WORKING ON PATCH FOR PANTS FIRST
+
 app.patch('/api/pants/:id', async (req, res) => {
   const pant = await Pants.findById(req.params.id)
   const newQuantity = req.body.quantity
   if (!pant) return res.status(404).send("Pant not found....");
   try {
     const updatedPant = await Pants.findByIdAndUpdate(req.params.id, {
-      quantity: newQuantity
+      sizes: newQuantity
     });
     console.log("succesfully updated")
     res.status(200).send(updatedPant);
