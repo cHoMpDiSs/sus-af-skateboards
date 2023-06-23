@@ -340,7 +340,7 @@ app.patch('/api/pants/:id', async (req, res) => {
   });
 
   app.get('*',(req, res, next) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
 
