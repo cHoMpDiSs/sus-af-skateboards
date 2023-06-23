@@ -20,6 +20,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+console.log(process.env.REACT_APP_CONNECTION_STRING)
 mongoose.connect(process.env.REACT_APP_CONNECTION_STRING)
 
 const Pants = mongoose.model('Pant', models.pantsSchema)
