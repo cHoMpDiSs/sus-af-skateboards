@@ -5,9 +5,19 @@ const models = {
       
       product: String,
       name: String,
-      attributes: {
+      img: String,
+      sizes : {small: {
         size: String,
-        quantity: String},
+        quantity: Number
+      },
+      medium: {
+        size: String,
+        quantity: Number
+      },
+      large: {
+        size: String,
+        quantity: Number
+      }},
       price: Number
     },
     
@@ -15,17 +25,18 @@ const models = {
      
       product: String,
       name: String,
+      img: String,
       sizes : {small: {
         size: String,
-        quantity: String
+        quantity: Number
       },
       medium: {
         size: String,
-        quantity: String
+        quantity: Number
       },
       large: {
         size: String,
-        quantity: String
+        quantity: Number
       }},
       color: String,
       price: Number,
@@ -36,18 +47,19 @@ const models = {
      
       product: String,
       name: String,
-      small: {
+      img: String,
+      sizes : {small: {
         size: String,
-        quantity: String
+        quantity: Number
       },
       medium: {
         size: String,
-        quantity: String
+        quantity: Number
       },
       large: {
         size: String,
-        quantity: String
-      },
+        quantity: Number
+      }},
       color: String,
       price: Number,
       description: String

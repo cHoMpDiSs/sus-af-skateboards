@@ -24,90 +24,211 @@ const Pants = mongoose.model('Pant', models.pantsSchema)
 const Skateboards = mongoose.model('Skateboard', models.skateboardSchema)
 const Tshirts = mongoose.model('Tshirt', models.tshirtSchema)
 
-const susBaggies = new Pants({
+const susBaggiesStone = new Pants({
   product: "pants",
-  name: "90's baggy jeans",
+  name: "90's baggy jeans stone",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/pants/baggy_stone.jpg",
   sizes : { small: {
-    size: "Small",
+    size: "small",
     quantity: 15
   },
   medium: {
-    size: "Medium",
+    size: "medium",
     quantity: 15
   },
   large: {
-    size: "Large",
+    size: "large",
     quantity: 15
   }},
   color: "Black",
   price: 80,
   description: "Bring back the 90's skate scene with this classic cut.",
 });
-
-const susBaggiesL = new Pants({
+const susBaggiesBlack = new Pants({
   product: "pants",
-  name: "90's baggy jeans",
-  size: "Large",
-  color: "Black",
+  name: "90's baggy jeans black",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/pants/baggy_black.jpg",
+  sizes : { small: {
+    size: "small",
+    quantity: 15
+  },
+  medium: {
+    size: "medium",
+    quantity: 15
+  },
+  large: {
+    size: "large",
+    quantity: 15
+  }},
+  color: "Blue",
   price: 80,
   description: "Bring back the 90's skate scene with this classic cut.",
-  quantity: 5,
-  instock: true
 });
 
-const susBasicDeck85 = new Skateboards({
+const susBaggiesBlue = new Pants({
+  product: "pants",
+  name: "90's baggy jeans blue",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/pants/baggy_blue.jpg",
+  sizes : { small: {
+    size: "small",
+    quantity: 15
+  },
+  medium: {
+    size: "medium",
+    quantity: 15
+  },
+  large: {
+    size: "large",
+    quantity: 15
+  }},
+  color: "Blue",
+  price: 80,
+  description: "Bring back the 90's skate scene with this classic cut.",
+});
+
+const susBasicDeckBlack = new Skateboards({
   product: "skateboards",
-  name: "SUS AF Minimalist",
-  size: "8.5",
+  name: "SUS AF Minimalist Black",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/black_deck.jpeg",
+  sizes : {small: {
+    size: "8.38",
+    quantity: 15
+  },
+  medium: {
+    size: "8.5",
+    quantity: 15
+  },
+  large: {
+    size: "8.63",
+    quantity: 15
+  }},
   price: 45,
-  quantity: 15,
-  instock: true
+  quantity: 15
+ 
 });
-
-const susBasicDeck83 = new Skateboards({
+const susBasicDeckRed = new Skateboards({
   product: "skateboards",
-  name: "SUS AF Minimalist",
-  size: "8.3",
+  name: "SUS AF Minimalist Red",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/red_deck.jpeg",
+  sizes : {small: {
+    size: "8.38",
+    quantity: 15
+  },
+  medium: {
+    size: "8.5",
+    quantity: 15
+  },
+  large: {
+    size: "8.63",
+    quantity: 15
+  }},
   price: 45,
-  quantity: 15,
-  instock: true
+  quantity: 15
+ 
 });
 
-const susBasicDeck8 = new Skateboards({
+
+const susBasicDeckPurple = new Skateboards({
   product: "skateboards",
-  name: "SUS AF Minimalist",
-  size: "8",
+  name: "SUS AF Minimalist Purple",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/skateboards/purple_deck.jpeg",
+  sizes : {small: {
+    size: "8.38",
+    quantity: 15
+  },
+  medium: {
+    size: "8.5",
+    quantity: 15
+  },
+  large: {
+    size: "8.63",
+    quantity: 15
+  }},
   price: 45,
-  quantity: 15,
-  instock: true
+  quantity: 15
+ 
 });
 
-const susBasicDeck863 = new Skateboards({
-  product: "skateboards",
-  name: "SUS AF Minimalist",
-  size: "8.63",
-  price: 45,
-  quantity: 15,
-  instock: true
-});
-
-const tShirtWhite = new Tshirts({
+const tShirtGrey = new Tshirts({
   product: "shirts",
-  name: "Plain White smiley Tee ",
-  size: "xL",
+  name: "Plain Grey sus Tee ",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/grey_shirt.jpg",
+  sizes : {small: {
+    size: "small",
+    quantity: 15
+  },
+  medium: {
+    size: "medium",
+    quantity: 15
+  },
+  large: {
+    size: "large",
+    quantity: 15
+  }},
   price: 19.99,
   quantity: 10,
   description: "",
   instock: true
 });
 
-// tShirtWhite.save();
-// susBaggies.save();
-// susBasicDeck863.save();
-// susBasicDeck85.save();
-// susBasicDeck83.save();
-// susBasicDeck8.save()
-// susBaggiesL.save()
+const tShirtGreen = new Tshirts({
+  product: "shirts",
+  name: "Plain Green sus Tee ",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/green_shirt.JPG",
+  sizes : {small: {
+    size: "small",
+    quantity: 15
+  },
+  medium: {
+    size: "medium",
+    quantity: 15
+  },
+  large: {
+    size: "large",
+    quantity: 15
+  }},
+  price: 19.99,
+  quantity: 10,
+  description: "",
+  instock: true
+});
+
+const tShirtRed= new Tshirts({
+  product: "shirts",
+  name: "Plain Red sus Tee ",
+  img: "https://susaf.s3.us-west-1.amazonaws.com/static/shirts/red_shirt.JPG",
+  sizes : {small: {
+    size: "small",
+    quantity: 15
+  },
+  medium: {
+    size: "medium",
+    quantity: 15
+  },
+  large: {
+    size: "large",
+    quantity: 15
+  }},
+  price: 19.99,
+  quantity: 10,
+  description: "",
+  instock: true
+});
+
+
+// susBaggiesBlack.save()
+// susBaggiesBlue.save()
+// susBaggiesStone.save()
+// susBasicDeckBlack.save()
+// susBasicDeckPurple.save()
+// susBasicDeckRed.save()
+// tShirtGrey.save()
+// tShirtGreen.save()
+// tShirtRed.save()
+
+
+
+
 
 
 // add middlewares
@@ -169,11 +290,11 @@ app.post('/api/skateboards', async(req , res) =>{
 app.patch('/api/skateboards/:id', async (req, res) => {
   
   const skateboard = await Skateboards.findById(req.params.id)
-  const newQuantity = req.body.quantity
+  const newQuantity = req.body.sizes
   if (!skateboard) return res.status(404).send("Skateboard not found....");
   try {
     const updatedSkate = await Skateboards.findByIdAndUpdate(req.params.id, {
-      quantity: newQuantity     
+      sizes: newQuantity     
     });
     console.log("succesfully updated")
     res.status(200).send(updatedSkate);
@@ -186,11 +307,11 @@ app.patch('/api/skateboards/:id', async (req, res) => {
 
 app.patch('/api/shirts/:id', async (req, res) => {
   const shirt = await Tshirts.findById(req.params.id)
-  const newQuantity = req.body.quantity
+  const newQuantity = req.body.sizes
   if (!shirt) return res.status(404).send("Shirt not found....");
   try {
     const updatedShirt = await Tshirts.findByIdAndUpdate(req.params.id, {
-      quantity: newQuantity
+      sizes: newQuantity
     });
     console.log("succesfully updated")
     res.status(200).send(updatedShirt);
@@ -205,7 +326,8 @@ app.patch('/api/shirts/:id', async (req, res) => {
 
 app.patch('/api/pants/:id', async (req, res) => {
   const pant = await Pants.findById(req.params.id)
-  const newQuantity = req.body.quantity
+  const newQuantity = req.body.sizes
+  console.log(newQuantity, "SERVER PATCH QUANTITY")
   if (!pant) return res.status(404).send("Pant not found....");
   try {
     const updatedPant = await Pants.findByIdAndUpdate(req.params.id, {
