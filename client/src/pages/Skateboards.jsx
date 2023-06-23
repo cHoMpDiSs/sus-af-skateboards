@@ -7,18 +7,17 @@ import Card from "../components/Card";
 const Skateboards = (props) =>{
     const [skateboard, setSkateboard] = useState([]);
     const {onAdd, cartItems} = props;
- 
     useEffect(()=>{
     skateboards()
     },[]) 
     const [sizeSelector, setSelector] = useState("small");
-
+    
+    // this is showing local host on the server 
     const skateboards = async () =>{
     const response = await fetch('https://susaf-b1c07c666ead.herokuapp.com/api/skateboards');
     setSkateboard(await response.json())
 }
     
-
 const boardCartQty = (productId,size) =>{
     let boardCartItems = 0;
     for (let i = 0; i < cartItems.length; i++){
