@@ -22,9 +22,10 @@
   },
   "scripts": {
     "server": "node server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run build\"",
+    "dev": "concurrently \"npm run server\" \"npm run serve\"",
     "start": "node server/index.js",
-    "build": "serve -s build",
+    "build": "react-scripts build",
+    "serve": "serve -s build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run dev"
