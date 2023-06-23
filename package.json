@@ -24,11 +24,11 @@
     "client": "npm start",
     "server": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "serve -s build",
+    "start": "node server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run server && npm run client"
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
 
   },
   "proxy": "http://localhost:5000",
