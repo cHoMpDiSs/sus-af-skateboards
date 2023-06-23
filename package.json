@@ -28,9 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "install-client": "npm install && npm run build && cd ..",
-    "install-server": "cd server && npm install && cd .. ",
-    "heroku-postbuild": "npm run install-client && npm run install-server"
+    "heroku-postbuild": "npm run client && npm run server"
 
   },
   "proxy": "http://localhost:5000",
