@@ -18,14 +18,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-const pantsRouter = require('./routes/pants');
-app.use('/api/pants', pantsRouter);
+// const pantsRouter = require('./routes/pants');
+// app.use('/api/pants', pantsRouter);
 
-const skateboardRouter = require('./routes/skateboard');
-app.use('/api/skateboards', skateboardRouter);
+// const skateboardRouter = require('./routes/skateboard');
+// app.use('/api/skateboards', skateboardRouter);
 
-const shirtRouter = require('./routes/shirts');
-app.use('/api/shirts, shirtRouter');
+// const shirtRouter = require('./routes/shirts');
+// app.use('/api/shirts, shirtRouter');
 
 mongoose.connect("mongodb+srv://jordonomarchesano:3INwt4S40AY9KMLL@susafdb.ot9lcde.mongodb.net/?retryWrites=true&w=majority")
 // mongoose.connect("mongodb://127.0.0.1:27017/susafDB")
