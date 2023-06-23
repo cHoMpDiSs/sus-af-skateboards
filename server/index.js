@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import bodyParser from "body-parser";
 import cors from "cors"
+import dotenv from "dotenv";
+
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,15 +16,11 @@ const app = express(); // create express app
 const PORT = process.env.PORT || 5000
 
 app.use(cors());
-// const urlencodedParser = bodyParser.urlencoded({extended: false})
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-
-mongoose.connect(MONGODB_CONNECTION_STRING)
-// mongoose.connect("mongodb://127.0.0.1:27017/susafDB")
-
+mongoose.connect(process.env.REACT_APP_CONNECTION_STRING)
 
 const Pants = mongoose.model('Pant', models.pantsSchema)
 const Skateboards = mongoose.model('Skateboard', models.skateboardSchema)
@@ -228,11 +227,6 @@ const tShirtRed= new Tshirts({
 // tShirtGrey.save()
 // tShirtGreen.save()
 // tShirtRed.save()
-
-
-
-
-
 
 // add middlewares
 app.use(express.static(path.join(__dirname, "..", "build")));
