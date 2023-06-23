@@ -358,7 +358,7 @@ app.patch('/api/pants/:id', async (req, res) => {
 
 
 // start express server on port 5000
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log("server started on port 5000");
 });
 
