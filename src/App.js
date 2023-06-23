@@ -71,7 +71,7 @@ const checkOut = () => {
 
 
       
-      fetch("http://localhost:5000/api/"+ typeString + "/" + idString , {
+      fetch("https://susaf-b1c07c666ead.herokuapp.com/api/"+ typeString + "/" + idString , {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
