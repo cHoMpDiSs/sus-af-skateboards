@@ -21,6 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+<<<<<<< HEAD
     "dev": "concurrently \"npm run server\"npm run client ",
     "client": "npm start --prefix client",
     "server": "node server/index.js",
@@ -29,6 +30,17 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
+=======
+    "server": "node server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run serve\"",
+    "start": "node server/index.js",
+    "build": "react-scripts build",
+    "serve": "serve -s build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
+
+>>>>>>> revert1
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
