@@ -14,7 +14,7 @@ const Skateboards = (props) =>{
     
     // this is showing local host on the server 
     const skateboards = async () =>{
-    const response = await fetch('https://susaf-b1c07c666ead.herokuapp.com/api/skateboards');
+    const response = await fetch('http://localhost:5000/api/skateboards');
     setSkateboard(await response.json())
 }
     
