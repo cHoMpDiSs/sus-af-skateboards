@@ -12,7 +12,7 @@ const Pants = (props) =>{
     
     const [sizeSelector, setSelector] = useState("small");
     const pants = async () =>{
-    const response = await fetch('http://localhost:5000/api/pants');
+    const response = await fetch('https://susaf-b1c07c666ead.herokuapp.com/api/pants');
     setPant(await response.json())
     }
 

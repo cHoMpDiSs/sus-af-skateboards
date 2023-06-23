@@ -14,7 +14,7 @@ const Skateboards = (props) =>{
     const [sizeSelector, setSelector] = useState("small");
 
     const skateboards = async () =>{
-    const response = await fetch('http://localhost:5000/api/skateboards');
+    const response = await fetch('https://susaf-b1c07c666ead.herokuapp.com/api/skateboards');
     setSkateboard(await response.json())
 }
     
