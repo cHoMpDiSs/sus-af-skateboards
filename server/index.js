@@ -10,6 +10,7 @@ import cors from "cors"
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express(); // create express app
+const PORT = process.env.PORT || 5000
 
 app.use(cors());
 // const urlencodedParser = bodyParser.urlencoded({extended: false})
@@ -17,6 +18,14 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+const pantsRouter = require('./routes/pants');
+app.use('/api/pants', pantsRouter);
+
+const skateboardRouter = require('./routes/skateboard');
+app.use('/api/skateboards', skateboardRouter);
+
+const shirtRouter = require('./routes/shirts');
+app.use('/api/shirts, shirtRouter');
 
 mongoose.connect("mongodb+srv://jordonomarchesano:3INwt4S40AY9KMLL@susafdb.ot9lcde.mongodb.net/?retryWrites=true&w=majority")
 // mongoose.connect("mongodb://127.0.0.1:27017/susafDB")
