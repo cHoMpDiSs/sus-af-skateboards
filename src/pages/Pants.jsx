@@ -40,7 +40,7 @@ const Pants = (props) =>{
     return(
         <div>
         <Header/>
-            <h2 className="mb-4 text-4xl font-extrabold">Pants</h2>
+            <h2 className="mb-4 text-4xl font-extrabold text-center">Pants</h2>
             <div className="h-56 grid grid-cols-3 gap-4 content-start">
                 {pant.map((product)=>{
                     
