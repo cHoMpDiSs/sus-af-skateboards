@@ -37,13 +37,12 @@ const Card = (props) => {
 
 
 return(
-
-<div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700">
-    
-        <p className="mb-2 font-bold tracking-tight dark:text-black">{name}</p>
+    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+        <div className="overflow-hidden rounded-lg shadow-lg align-center">
+        <p className="mb-2 pt-2 text-center font-bold tracking-tight dark:text-black">{name}</p>
   
     <img src={product.img} alt={name}></img>
-    <div className="text-center">
+    <div className="text-center pb-3 ">
     <select name="qSelector" className="bg-grey rounded border border-black  py-1 px-1 ms-2 relative"   
                         onChange={handleSelectorChange}>
                             {rows.map((option) => option )}
@@ -55,6 +54,9 @@ return(
                             Add </button> ):(
                             <p className="text-right"> </p>
                         )}  
+
+
+</div>
 </div>
 </div>
 )
