@@ -23,7 +23,7 @@
   "scripts": {
     "server": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run serve\"",
-    "start": "node server/index.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "serve": "serve -s build",
     "test": "react-scripts test --env=jsdom",

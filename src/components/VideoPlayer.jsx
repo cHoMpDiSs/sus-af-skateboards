@@ -5,8 +5,8 @@ const VideoPlayer = () => {
     const ref = useRef(null)
     return (
         
-        <div className="flex h-screen  items-center flex-col ">   
-        <ReactPlayer 
+        <div className='player-wrapper aspect-video mt-20'>
+        <ReactPlayer className='react-player '
         playing={true}
         loop={false}
         light="images/susaf.png"
