@@ -1,6 +1,16 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
      
 module.exports = function(app) {
-    app.use(createProxyMiddleware('/api/**', { target: 'http://localhost:5000' }));
-    app.use(createProxyMiddleware('/otherApi/**', { target: 'http://localhost:5000' }));
-};
+    try{
+        app.use(
+            '/api',
+            proxy({
+              target: 'http://localhost:5000',
+              changeOrigin: true
+            })
+          )
+     }
+     catch(err){
+        console.log(err.message);
+     }
+    }
