@@ -13,7 +13,7 @@ dotenv.config()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express(); // create express app
-const PORT = process.env.PORT || 5000
+
 
 app.use(cors());
 
@@ -345,7 +345,7 @@ app.patch('/api/pants/:id', async (req, res) => {
 
 
 // start express server on port 5000
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("server started on port 5000");
 });
 
