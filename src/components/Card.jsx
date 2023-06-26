@@ -37,7 +37,7 @@ const Card = (props) => {
 
 
 return(
-    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+    <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3 ">
         <div className="overflow-hidden rounded-lg shadow-lg align-center">
         <p className="mb-2 pt-2 text-center font-bold tracking-tight dark:text-black">{name}</p>
   

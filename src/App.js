@@ -40,10 +40,11 @@ const App = () =>{
 console.log(cartItems, "CART ITEMS")
 
 
-const onRemove = (item) =>{
+const onRemove = (item,size) =>{
   let newCartArr = [...cartItems];
+  console.log("ITEM----->",item, "size---->", size)
   for(let i = 0; i < cartItems.length; i++){
-    if (cartItems[i].item._id === item.item._id && cartItems[i].size === item.size){
+    if (cartItems[i].item._id === item.item._id && cartItems[i].size === size){
         newCartArr[i].quantity --;
         if(cartItems[i].quantity === 0){
          newCartArr.splice(i,i+1)
