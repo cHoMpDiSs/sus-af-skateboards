@@ -11,25 +11,20 @@ const Skateboards = (props) =>{
     skateboards()
     },[]) 
    
-    
-    // this is showing local host on the server 
     const skateboards = async () =>{
     const response = await fetch('https://susaf-b1c07c666ead.herokuapp.com/api/skateboards');
     setSkateboard(await response.json())
 }
     
-
     return(
         <div>
             <Header/>
             <h2 className="mb-4 mt-10 text-4xl font-extrabold text-center ">Skateboards</h2>
-      
-            <div class="container my-12 mx-auto px-4 md:px-12">
-                <div class="flex flex-wrap -mx-1 lg:-mx-4">
+            <div className="container my-12 mx-auto px-4 md:px-12">
+                <div className="flex flex-wrap -mx-1 lg:-mx-">
+                    
                 {skateboard.map((product)=>{
-             
                         return(
-                  
                             <Card
                             key={product._id}
                             name = {product.name}
@@ -37,10 +32,8 @@ const Skateboards = (props) =>{
                             price = {product.price}
                             cartItems = {cartItems}
                             onAdd ={onAdd}
-                            product={product}
-                           
+                            product={product} 
                         />
-  
                 )}
                 )}
             </div>

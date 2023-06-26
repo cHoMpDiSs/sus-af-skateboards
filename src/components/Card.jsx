@@ -37,13 +37,13 @@ const Card = (props) => {
 
 
 return(
-    <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3 ">
-        <div className="overflow-hidden rounded-lg shadow-lg align-center">
+    <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3">
+        <div className="rounded-lg shadow-lg align-center">
         <p className="mb-2 pt-2 text-center font-bold tracking-tight dark:text-black">{name}</p>
   
-    <img className="w-full object-cover h-96" src={product.img} alt={name}></img>
+    <img className="object-cover h-96 mx-auto" src={product.img} alt={name}></img>
     <div className="text-center pb-3 ">
-    <select name="qSelector" className="bg-grey rounded border border-black  py-1 px-1 ms-2 relative"   
+    <select name="qSelector" className="bg-grey rounded border border-black  py-1 px-1 ms-0 relative"   
                         onChange={handleSelectorChange}>
                             {rows.map((option) => option )}
     </select>

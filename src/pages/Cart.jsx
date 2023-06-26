@@ -27,20 +27,21 @@ const Cart = (props) =>{
     <div>
    <Header/>
    <h2 className="mb-4 ml-9 text-4xl font-extrabold ">Your Cart</h2>
-        <div class="container my-12 mx-auto px-4 md:px-12">
-                <div class="flex flex-wrap -mx-1 lg:-mx-">
+        <div className="container my-12 mx-auto px-4 md:px-12">
+                <div className="flex flex-wrap -mx-1 lg:-mx-">
+
             {calculateTotal()}     
             {cartItems.length === 0 && <div>Cart is empty </div>}
-        {cartItems.map((item) => {
-            return(
-            <Cartcard
-            key={item._id}
-            product={item}
-            img={item.item.img}
-            onAdd={onAdd}
-            onRemove={onRemove}
-            />
-            )}
+            {cartItems.map((item) => {
+                return(
+                <Cartcard
+                key={item.item._id}
+                product={item}
+                img={item.item.img}
+                onAdd={onAdd}
+                onRemove={onRemove}
+                />
+                )}
            
         )}
          </div>
@@ -49,8 +50,11 @@ const Cart = (props) =>{
             <div className="relative">   
             </div>
             {total !== 0 &&  <div>    
-                <p>${total.toFixed(2)} tax ${tax.toFixed(2)}</p>
+                <div className="text-right">
+                <p> ${total.toFixed(2)} </p>
+                <p>Tax ${tax.toFixed(2)}</p>
                 <p>Total:${finalTotal.toFixed(2)}</p>
+                </div>
         {cartItems.length !== 0 && <button className="mr-auto bg-transparent hover:bg-black-400 text-black-700  font-semibold
                         py-.75 px-2 border border-black hover:border-transparent rounded "
                       onClick={()=>{checkOut();navigateToThankYou()}}>Check Out</button>}
