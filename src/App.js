@@ -31,22 +31,21 @@ const App = () =>{
       }else{
         setCartItems([...cartItems, {item, size, quantity:1}]);
         console.log(cartItems+" empty cart or new item being added")
-        // setCheckOutItems([...checkOutItems, product])
-        // console.log("SET CHECKOUT ITEMS", checkOutItems)
+
       };
   };
 
-// console.log(checkOutItems, "CHECK OUT ITEMS")
 console.log(cartItems, "CART ITEMS")
 
 
-const onRemove = (item) =>{
+const onRemove = (item,size) =>{
   let newCartArr = [...cartItems];
+  console.log("ITEM----->",item, "size---->", size)
   for(let i = 0; i < cartItems.length; i++){
-    if (cartItems[i].item._id === item.item._id && cartItems[i].size === item.size){
+    if (cartItems[i].item._id === item._id && cartItems[i].size === size){
         newCartArr[i].quantity --;
-        if(cartItems[i].quantity === 0){
-         newCartArr.splice(i,i+1)
+        if(newCartArr[i].quantity === 0){
+         newCartArr.splice(i,1)
         }
     }
     setCartItems(newCartArr)
@@ -54,7 +53,6 @@ const onRemove = (item) =>{
 }
 
 const checkOut = () => {
-//  console.log(checkOutItems, "CHECK OUT ITEMS IN CHECKOUT")
  console.log(cartItems, "CART ITEMS IN CHECKOUT")
 
   
@@ -85,14 +83,10 @@ const checkOut = () => {
           return response.json();
           })
           .then(function (data) {
-          // console.log("this is the data", data);
           });
         
     }
-    // else{
-    //   console.log(products[i]._id, " Does not match ", checkOutItems[i]._id)
-    // }
-    // } 
+
     setCheckOutItems([])
     setCartItems([])
   }

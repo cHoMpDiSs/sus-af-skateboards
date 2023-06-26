@@ -13,6 +13,3 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
     );
 
 
-
-
-    // "start": "npm run build && (cd server && npm start)"
