@@ -23,8 +23,9 @@
   },
   "scripts": {
     "server": "node server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run serve\"",
-   
+    "dev": "concurrently \"npm run server\" \"npm run build\"",
+    "dev2": "concurrently \"npm run server\" \"npm run dev-front\"",
+    "dev-front": "react-scripts start",
     "start": "node server/index.js",
     "build": "react-scripts build",
     "serve": "serve -s build",

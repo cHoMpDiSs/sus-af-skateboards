@@ -41,7 +41,7 @@ return(
         <div className="overflow-hidden rounded-lg shadow-lg align-center">
         <p className="mb-2 pt-2 text-center font-bold tracking-tight dark:text-black">{name}</p>
   
-    <img src={product.img} alt={name}></img>
+    <img className="w-full object-cover h-96" src={product.img} alt={name}></img>
     <div className="text-center pb-3 ">
     <select name="qSelector" className="bg-grey rounded border border-black  py-1 px-1 ms-2 relative"   
                         onChange={handleSelectorChange}>
