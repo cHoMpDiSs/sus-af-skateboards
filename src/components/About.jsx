@@ -7,10 +7,7 @@ const About = () =>{
 
     return(
         <div className="container mx-auto center px-20 pb-32 text-center">
-            <p className="text-xl">Sus Af is a Los Angeles based skateboarding brand founded and managed entirely by local skateboarders.
-            We are a team dedicated to bringing you the highest quality products made right here in California. You might think being a Claifornia based 
-            company means higher prices but in actuality we have been able to cut our shipping & importation cost to bring you higher quality products
-            at a competive price.
+            <p className="text-xl">Sus Af is an authentic skateboarding brand rooted in Los Angeles and run entirely by passionate local skateboarders. Our mission is to deliver the utmost quality products crafted right here in California. While being based in the Golden State might lead you to assume higher prices, we have successfully streamlined our shipping and importation processes, allowing us to offer superior products at a competitive price point.
         </p>
         </div>
     )
