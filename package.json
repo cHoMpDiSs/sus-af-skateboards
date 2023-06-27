@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "babel-plugin-macros": "^3.1.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "http-proxy-middleware": "^2.0.6",
@@ -25,13 +28,12 @@
   "scripts": {
     "server": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run build\"",
-    "start": "node server/index.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "serve": "serve -s build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
-
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {

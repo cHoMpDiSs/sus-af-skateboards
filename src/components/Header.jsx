@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () =>{
       
@@ -47,7 +49,7 @@ const Header = () =>{
             
                     </li>
                     <li className="nav-item">
-                      <Link className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" to="/cart">cart</Link>
+                      <Link className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" to="/cart"> <FontAwesomeIcon icon={faCartShopping}/></Link>
       
                     </li>
                   </ul>
