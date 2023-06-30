@@ -30,14 +30,14 @@ const Ordercard = () => {
     }, [])
     return (
         
-            <div className="my-10 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3">
+            <div className="my-10 px-1 w-full lg:my-4 lg:px-4 ">
                 <div className="text-center">
                     </div>
                 <div className="rounded-lg shadow-lg align-center">
                 <p className="mb-2 pt-2 text-center font-bold tracking-tight dark:text-black">Thank you for your order</p>
                 <p className="mb-2 pt-2 text-center font-bold tracking-tight dark:text-black">Your order number is # {orderNumber}</p>
-            <div className="text-center pb-3 ">
-        </div>
+            <img className="lg:w-10/12 mx-auto" src="images/susaf.png" alt="sus-logo"/>
+        
         </div>
         </div>
         
