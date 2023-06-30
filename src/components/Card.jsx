@@ -39,9 +39,10 @@ const Card = (props) => {
 return(
     <div className="my-1 px-1 w-full lg:my-4 lg:px-4 lg:w-1/3">
         <div className="rounded-lg shadow-lg align-center">
-        <p className="mb-2 pt-2 text-center font-bold tracking-tight dark:text-black">{name}</p>
+        
   
     <img className="object-cover h-96 mx-auto" src={product.img} alt={name}></img>
+    <p className="mb-2 pt-2 text-center tracking-tight dark:text-black">{name}</p>
     <div className="text-center pb-3 ">
     <select name="qSelector" className="bg-grey rounded border border-black  py-1 px-1 ms-0 relative"   
                         onChange={handleSelectorChange}>

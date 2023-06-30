@@ -8,7 +8,7 @@ const Cartcard = (props) => {
         <div className="rounded-lg shadow-lg ">
             <img className="object-cover h-96 mx-auto" src={img} alt={product.item.name}></img>
             <div className="text-center pb-3 ">
-            <p className="mb- pt- text-center font-bold tracking-tight dark:text-black">{product.item.name}</p>
+            <p className="mb- pt- text-center tracking-tight dark:text-black">{product.item.name}</p>
             {product.quantity} x ${product.item.price}                        
                         {product.quantity < product.item.sizes[product.size].quantity ?  <div>
                     <button className="bg-transparent hover:bg-black-400 text-black-700 font-semibold
