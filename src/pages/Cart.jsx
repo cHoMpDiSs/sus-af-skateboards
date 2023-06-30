@@ -5,10 +5,9 @@ import Cartcard from "../components/Cartcard";
 
 const Cart = (props) =>{
     const {cartItems, onAdd, onRemove, checkOut} = props;
-    // const [total, setTotal] = useEffect(0)
     const navigate = useNavigate();
     const navigateToThankYou = () => {
-        navigate('/thankyou');
+        navigate('/order');
     };
     console.log("CART ITEMS IN CART", cartItems)
     

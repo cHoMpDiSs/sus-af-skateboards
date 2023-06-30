@@ -13,10 +13,8 @@ const Main = () =>{
             <div className="flex justify-center mb-32"> 
                 <Carousel/>
             </div>
-           
                 <About/>
                 <Footer/>
-               
         </div>
        
     )

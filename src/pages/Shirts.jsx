@@ -26,7 +26,6 @@ return(
             {shirt.map((product)=>{
          
                     return(
-         
                         <Card
                         key={product._id}
                         name = {product.name}
@@ -35,7 +34,6 @@ return(
                         cartItems = {cartItems}
                         onAdd ={onAdd}
                         product={product}
-                       
                     />
 
          

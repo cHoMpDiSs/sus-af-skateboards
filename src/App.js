@@ -7,7 +7,7 @@ import Shirts from "./pages/Shirts";
 import Main from "./pages/Main";
 import Skateboards from "./pages/Skateboards";
 import Cart from "./pages/Cart";
-import Thank from "./pages/Thank";
+import Order from "./pages/Order";
 
 
 const App = () =>{
@@ -100,7 +100,7 @@ const checkOut = () => {
         <Route path="/skateboards" element={<Skateboards onAdd={onAdd} cartItems={cartItems}/>}/>
         <Route path="/cart" element={<Cart onAdd={onAdd} cartItems={cartItems} 
         setCartItems={setCartItems} checkOutItems={checkOutItems} onRemove={onRemove} checkOut={checkOut} ></Cart>}/>
-        <Route path="/thankyou" element={<Thank/>}/>
+        <Route path="/order" element={<Order/>}/>
       </Routes>
     
   )
