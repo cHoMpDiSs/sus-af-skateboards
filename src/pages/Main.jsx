@@ -9,8 +9,10 @@ const Main = () =>{
     return (
         <div>
             <Header/>
-            <VideoPlayer/>
-            <div className="flex justify-center mb-32"> 
+            <div className="lg:mr-48 lg:ml-48">
+                <VideoPlayer/>
+            </div>
+            <div className="flex justify-center mb-20"> 
                 <Carousel/>
             </div>
                 <About/>
