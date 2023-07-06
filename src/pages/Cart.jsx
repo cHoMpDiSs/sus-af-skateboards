@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Cartcard from "../components/Cartcard";
+import Footer from "../components/Footer";
 
 const Cart = (props) =>{
     const {cartItems, onAdd, onRemove, checkOut} = props;
@@ -61,7 +62,7 @@ const Cart = (props) =>{
                     </div>
                       }
             </div>
-        
+         
     </div>
 )};
 
