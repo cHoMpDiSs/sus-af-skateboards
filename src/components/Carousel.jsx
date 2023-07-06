@@ -55,16 +55,18 @@ class Carousel extends Component {
 
   render() {
     return (
-      <div className="mt-28 h-auto pt- mb-">        
-      <div className="max-w-lg h-auto lg:h-96 flex overflow-hidden relative">
-          <AiOutlineLeft
+      <div className="mt-28 h-auto pt- mb-">       
+     
+      <div className="max-w-lg h-96 w-96 lg:h-96 flex overflow-hidden relative">
+      <AiOutlineLeft
             onClick={this.prevSlide}
-            className="absolute left-0 text-3xl inset-y-1/2 text-white cursor-pointer"
-          />
+            className="relative left-2 text-3xl inset-y-1/2 text-black cursor-pointer"
+          /> 
 
           <Swipe onSwipeLeft={this.nextSlide} onSwipeRight={this.prevSlide}>
             {images.map((slide, index) => {
               return (
+                
                 <img
                   src={slide}
                   alt="This is a carousel slide"
@@ -105,7 +107,7 @@ class Carousel extends Component {
 
           <AiOutlineRight
             onClick={this.nextSlide}
-            className="absolute right-0 text-3xl inset-y-1/2 text-white cursor-pointer"
+            className="absolute right-0 text-3xl inset-y-1/2 text-black cursor-pointer"
           />
         </div>
       </div>
