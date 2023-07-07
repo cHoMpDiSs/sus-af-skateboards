@@ -57,7 +57,7 @@ class Carousel extends Component {
     return (
       <div className="mt-28 h-auto pt- mb- ">       
 
-      <div className="max-w-lg h-96 w-screen  lg:h-96 flex overflow-hidden relative justify-center ">
+      <div className="max-w-lg h-96 w-96  flex overflow-hidden relative justify-center ">
       <AiOutlineLeft
             onClick={this.prevSlide}
             className="absolute left-0 text-3xl inset-y-1/2 text-black cursor-pointer"
